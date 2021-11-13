@@ -31,21 +31,31 @@ struct TitleAndAuthorStack: View {
 extension Book{
 
     struct Image: View {
+        let image: SwiftUI.Image?
         let title: String
         var size: CGFloat?
+        let cornerRadius: CGFloat
         
         var body: some View {
-            let symbol = SwiftUI.Image(titile: title) ??
-                .init(systemName: "book")
+            if let image = image{
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: size, height: size)
+                    .cornerRadius(cornerRadius)
+            }else{
+                let symbol = SwiftUI.Image(titile: title) ??
+                    .init(systemName: "book")
                 
                 symbol
-                .resizable()
-                // as possible as fit in frame
-                .scaledToFit()
-                // set a frame
-                .frame(width:size, height:size)
-                // image like text
-                .foregroundColor(.secondary.opacity(0.5))
+                    .resizable()
+                    // as possible as fit in frame
+                    .scaledToFit()
+                    // set a frame
+                    .frame(width:size, height:size)
+                    // image like text
+                    .foregroundColor(.secondary.opacity(0.5))
+            }
         }
     }
     
@@ -63,6 +73,20 @@ extension Image{
     }
 }
 
+extension Book.Image{
+    /// A preivew Image.
+    init(title:String) {
+        self.init(image: nil,title: title,cornerRadius: .init())
+    }
+}
+
+extension View{
+    var previewedInAllColorSchemes: some View{
+        ForEach(
+            ColorScheme.allCases, id: \.self,
+            content: preferredColorScheme)
+    }
+}
 
 struct Book_Previews: PreviewProvider{
     static var previews: some View{
@@ -72,5 +96,6 @@ struct Book_Previews: PreviewProvider{
         Book.Image(title: "")
         Book.Image(title: "📖")
         }
+        .previewedInAllColorSchemes
     }
 }

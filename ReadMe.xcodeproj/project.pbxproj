@@ -15,6 +15,7 @@
 		95D53E85273BA70300F45A82 /* Book views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D53E84273BA70300F45A82 /* Book views.swift */; };
 		95D53E87273BC83700F45A82 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D53E86273BC83700F45A82 /* Library.swift */; };
 		95D53E89273BCF5600F45A82 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D53E88273BCF5600F45A82 /* DetailView.swift */; };
+		95D53E8B273D234C00F45A82 /* PHPickerViewController.View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D53E8A273D234C00F45A82 /* PHPickerViewController.View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		95D53E84273BA70300F45A82 /* Book views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book views.swift"; sourceTree = "<group>"; };
 		95D53E86273BC83700F45A82 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		95D53E88273BCF5600F45A82 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		95D53E8A273D234C00F45A82 /* PHPickerViewController.View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPickerViewController.View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,10 +62,11 @@
 		95D53E71273B8F9000F45A82 /* ReadMe */ = {
 			isa = PBXGroup;
 			children = (
+				95D53E8C273D237500F45A82 /* Models */,
 				95D53E72273B8F9000F45A82 /* ReadMeApp.swift */,
+				95D53E8A273D234C00F45A82 /* PHPickerViewController.View.swift */,
 				95D53E86273BC83700F45A82 /* Library.swift */,
 				95D53E83273B972100F45A82 /* Views */,
-				95D53E81273B946700F45A82 /* Book.swift */,
 				95D53E76273B8F9100F45A82 /* Assets.xcassets */,
 				95D53E7B273B8F9100F45A82 /* Info.plist */,
 				95D53E78273B8F9100F45A82 /* Preview Content */,
@@ -87,6 +90,14 @@
 				95D53E88273BCF5600F45A82 /* DetailView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		95D53E8C273D237500F45A82 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				95D53E81273B946700F45A82 /* Book.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +173,7 @@
 				95D53E89273BCF5600F45A82 /* DetailView.swift in Sources */,
 				95D53E75273B8F9000F45A82 /* ContentView.swift in Sources */,
 				95D53E87273BC83700F45A82 /* Library.swift in Sources */,
+				95D53E8B273D234C00F45A82 /* PHPickerViewController.View.swift in Sources */,
 				95D53E73273B8F9000F45A82 /* ReadMeApp.swift in Sources */,
 				95D53E82273B946700F45A82 /* Book.swift in Sources */,
 			);
@@ -296,7 +308,7 @@
 				DEVELOPMENT_TEAM = PLJU724YCG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ReadMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,7 +330,7 @@
 				DEVELOPMENT_TEAM = PLJU724YCG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ReadMe/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

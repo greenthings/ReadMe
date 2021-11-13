@@ -1,6 +1,7 @@
 //  Copyright (c) 2021 Razeware LLC
 //  Library.swift
 //  ReadMe
+import SwiftUI
 
 struct Library {
   var sortedBooks: [Book] { booksCache }
@@ -8,7 +9,7 @@ struct Library {
   /// An in-memory cache of the manually-sorted books that are persistently stored.
   private var booksCache: [Book] = [
     .init(title: "Ein Neues Land", author: "Shaun Tan"),
-    .init(title: "Bosch", author: "Laurinda Dixon"),
+    .init(title: "Bosch", author: "Laurinda Dixon", microReview:  "Earthily Delightful"),
     .init(title: "Dare to Lead", author: "Brené Brown"),
     .init(title: "Blasting for Optimum Health Recipe Book", author: "NutriBullet"),
     .init(title: "Drinking with the Saints", author: "Michael P. Foley"),
@@ -19,4 +20,6 @@ struct Library {
     .init(title: "Drawing People", author: "Barbara Bradley"),
     .init(title: "What to Say When You Talk to Yourself", author: "Shad Helmstetter")
   ]
+    
+    var images: [Book: Image] = [:]
 }

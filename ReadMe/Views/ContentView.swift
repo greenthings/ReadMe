@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var library: Library = Library()
+    
+    
     var body: some View {
         NavigationView {
-            List(Library().sortedBooks, id: \.title) { book in
-                BookRow(book: book)
+            List(library.sortedBooks) { book in
+                BookRow(book: book, image: $library.images[book])
             }
             .navigationTitle("My Library")
         }
@@ -21,14 +24,23 @@ struct ContentView: View {
 
 
 struct BookRow: View {
-    let book: Book
+    @ObservedObject var book: Book
+    @Binding var image: Image?
     
     var body: some View {
         NavigationLink(
-            destination: DetailView(book: book)){
+            destination: DetailView(book: book, image: $image)){
         HStack {
-            Book.Image(title: book.title,size: 80)
-            TitleAndAuthorStack(book: book,titleFont: .title2,authorFont: .title3)
+            Book.Image(image: image, title: book.title,size: 80, cornerRadius: 12)
+            VStack(alignment: .leading) {
+                TitleAndAuthorStack(book: book,titleFont: .title2,authorFont: .title3)
+                if !book.microReview.isEmpty{
+                    Spacer()
+                    TextField("", text: $book.microReview)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                }
+            }
         }
         .padding(.vertical)
     }
@@ -40,6 +52,7 @@ struct BookRow: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewedInAllColorSchemes
     }
 }
 
