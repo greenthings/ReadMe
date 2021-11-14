@@ -9,9 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @ObservedObject var book: Book
-    @Binding var image: Image?
-    @State var showingImagePicker = false
-    @State var showingDialog = false
+    @EnvironmentObject var library: Library
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,51 +23,22 @@ struct DetailView: View {
                 }
             TitleAndAuthorStack(book: book,titleFont: .title,authorFont: .title2)
             }
-            VStack{
-                Divider()
-                    .padding(.vertical)
-                TextField("Input your review", text: $book.microReview)
-                Divider()
-                    .padding(.vertical)
-                
-                Book.Image(image: image,title:book.title,cornerRadius: 16)
-                    .scaledToFit()
-                HStack{
-                    if image != nil{
-                    Spacer()
-                    Button("Delete Image"){
-                        showingDialog = true
-                    }
-                    }
-                    Spacer()
-                    Button("Update Image") {
-                        showingImagePicker = true
-                    }
-                    Spacer()
-                }
-                .padding()
-            }
-            Spacer()
+            ReviewAndImageStack(book: book, image: $library.images[book])
         }
-        .padding()
-        
-        .sheet(isPresented: $showingImagePicker) {
-            PHPickerViewController.View(image: $image)
-        }.confirmationDialog(
-                "Delete image for \(book.title)?",
-                isPresented: $showingDialog) {
-                Button("Delete", role: .destructive) { image = nil }
-            } message: {
-                Text("Delete image for \(book.title)?")
+        .onDisappear(perform: {
+            withAnimation {
+                library.sortBooks()
             }
+        })
+        .padding()
       }
     }
 
 
-
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(book: .init(), image: .constant(nil))
+        DetailView(book: .init())
+            .environmentObject(Library())
             .previewedInAllColorSchemes
     }
 }
