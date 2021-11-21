@@ -6,6 +6,42 @@ By raywernderlich
 
 Swift 5.5, iOS 15, Xcode 13
 
+### Things used
+
+State and Binding
+ObservedObject
+Environment
+EnvironmentObject
+
+NavigationView
+NavigationTitle
+toolbar
+disabled
+onDisappear
+withAnimation
+
+V,S,Z Stack
+Padding
+Divider
+Spacer
+
+Sheet
+confirmationDialog
+Textfiled
+
+Button
+tint
+onDelete
+onMove
+labelStyle
+
+Image
+resizable
+scaledTofill
+frame
+foregroundColor
+cornerRadius
+
 
 ### Test
 
