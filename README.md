@@ -9,6 +9,7 @@ Swift 5.5, iOS 15, Xcode 13
 <details>
     <summary>Things used</summary>
 
+    
 
 State and Binding
 
