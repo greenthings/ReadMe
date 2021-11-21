@@ -6,7 +6,9 @@ By raywernderlich
 
 Swift 5.5, iOS 15, Xcode 13
 
-### Things used
+<details>
+    <summary>Things used</summary>
+
 
 State and Binding
 
@@ -63,6 +65,10 @@ frame
 foregroundColor
 
 cornerRadius
+
+</details>
+
+
 
 
 ### Test
