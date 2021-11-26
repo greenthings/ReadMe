@@ -5,13 +5,25 @@ import SwiftUI
 import Combine
 import class UIKit.UIImage
 
+
+// Part: to distribute section of not finished or finished.
+// If you wanna plus section of reading, you can add this in here.
 enum Section: CaseIterable{
  case readMe
  case finished
+ //case reading
 }
 
+
+// Part: Datas for showing on list.
+// This class have one value and four methods
+// One variable is list of books, it takes from booksCache.
+// Four methods are Sort, Add, Delete, Move Function.
+
 class Library: ObservableObject {
+    
     var sortedBooks: [Section: [Book]] {
+        
         get{
         let groupedBooks = Dictionary(grouping: booksCache, by: \.readMe)
         return Dictionary(uniqueKeysWithValues: groupedBooks.map{
@@ -25,7 +37,7 @@ class Library: ObservableObject {
                 .flatMap{$0.value}
         }
     }
-    
+    // Sort Book list
     func sortBooks() {
         booksCache =
         sortedBooks
@@ -34,16 +46,18 @@ class Library: ObservableObject {
         objectWillChange.send()
     }
     
-  /// Adds a new book at the start of the library's manuallly-sorted books.
+    // Adds a new book at the start of the library's manuallly-sorted books.
     func addNewBook(_ book: Book, image: Image?){
         booksCache.insert(book, at: 0)
         images[book]  = image
     }
     
+    // Delete Book
     func deleteBooks(atOffsets offsets: IndexSet, section: Section){
         let booksBeforeDeletion = booksCache
         
         sortedBooks[section]?.remove(atOffsets: offsets)
+        
         // after deletion
         for change in booksCache.difference(from: booksBeforeDeletion){
             if case .remove(_, let deletedBook,_) = change{
@@ -52,6 +66,7 @@ class Library: ObservableObject {
         }
     }
     
+    // Move Books up or down when Edit Mode
     func moveBooks(oldOffsets: IndexSet, newOffset: Int, section: Section){
         sortedBooks[section]?.move(fromOffsets: oldOffsets, toOffset: newOffset)
     }
@@ -71,5 +86,6 @@ class Library: ObservableObject {
     .init(title: "What to Say When You Talk to Yourself", author: "Shad Helmstetter")
   ]
     
-    @Published var images: [Book: Image] = [:]
+  // This represents a representative image each book.
+  @Published var images: [Book: Image] = [:]
 }

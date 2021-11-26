@@ -79,6 +79,7 @@ private struct SectionView: View{
         }
         
     }
+    
     var body: some View{
         if let books = library.sortedBooks[section]{
             SwiftUI.Section {
