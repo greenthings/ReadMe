@@ -1,6 +1,4 @@
 # ReadMe
-By raywernderlich
-
 
 ### Version
 
